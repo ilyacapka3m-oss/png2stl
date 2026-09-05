@@ -1,0 +1,36 @@
+name: build-exe
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:   # кнопка "Run workflow" вручную
+
+jobs:
+  build-windows:
+    runs-on: windows-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt pyinstaller
+
+      - name: Build exe
+        run: |
+          pyinstaller --onefile --name png2cutter ^
+            --collect-all trimesh ^
+            --collect-all shapely ^
+            --collect-submodules cv2 ^
+            png2cutter.py
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: png2cutter-windows
+          path: dist/png2cutter.exe
