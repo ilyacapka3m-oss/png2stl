@@ -22,6 +22,7 @@ jobs:
           pip install -r requirements.txt pyinstaller
 
       - name: Build exe
+        shell: cmd
         run: |
           pyinstaller --onefile --name png2cutter ^
             --collect-all trimesh ^
