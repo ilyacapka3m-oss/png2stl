@@ -2,3 +2,4 @@ numpy
 opencv-python-headless
 shapely
 trimesh
+mapbox-earcut

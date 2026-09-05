@@ -28,6 +28,7 @@ jobs:
             --collect-all trimesh ^
             --collect-all shapely ^
             --collect-submodules cv2 ^
+            --collect-submodules mapbox_earcut ^
             png2cutter.py
 
       - name: Upload artifact
