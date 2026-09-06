@@ -26,7 +26,10 @@ import trimesh
 
 def load_mask(path: str) -> np.ndarray:
     """Читает PNG и возвращает бинарную маску объекта (255 = объект)."""
-    img = cv2.imread(path, cv2.IMREAD_UNCHANGED)
+    # ВАЖНО: cv2.imread не понимает пути с кириллицей на Windows.
+    # Читаем файл байтами через numpy + cv2.imdecode — юникод работает везде.
+    data = np.fromfile(path, dtype=np.uint8)
+    img = cv2.imdecode(data, cv2.IMREAD_UNCHANGED)
     if img is None:
         raise FileNotFoundError(f"Не удалось открыть файл: {path}")
 
