@@ -3,3 +3,4 @@ opencv-python-headless
 shapely
 trimesh
 mapbox-earcut
+manifold3d
