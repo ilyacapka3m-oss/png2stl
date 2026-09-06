@@ -190,9 +190,9 @@ def main():
     parser.add_argument("--output-dir", default="output",
                         help="Папка для STL в режиме пакетной обработки "
                              "(по умолчанию output)")
-    parser.add_argument("--thickness", type=float, default=3.0,
+    parser.add_argument("--thickness", type=float, default=1.0,
                         help="Толщина стенки в мм (по умолчанию 3)")
-    parser.add_argument("--height", type=float, default=15.0,
+    parser.add_argument("--height", type=float, default=12.5,
                         help="Высота формы в мм (по умолчанию 15)")
     parser.add_argument("--size", type=float, default=80.0,
                         help="Наибольшая сторона модели в мм (масштаб подгоняется "
@@ -206,7 +206,7 @@ def main():
     ring_group.add_argument("--ring-width", type=float, default=3.0,
                             help="Ширина внешнего кольца в мм (по умолчанию 3). "
                                  "0 = отключить кольцо")
-    ring_group.add_argument("--ring-height", type=float, default=3.0,
+    ring_group.add_argument("--ring-height", type=float, default=2.0,
                             help="Высота внешнего кольца в мм (по умолчанию 3). "
                                  "0 = отключить кольцо")
     ring_group.add_argument("--no-ring", action="store_true",
